@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 1
+        versionName "0.0.1"
+        setProperty("archivesBaseName", "markwon-$versionName")
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFile 'proguard.pro'
+        }
+    }
+}
+
+final def markwon_version = '4.1.2'
+
+dependencies {
+    
+    implementation "io.noties.markwon:core:$markwon_version"
+    implementation "io.noties.markwon:ext-strikethrough:$markwon_version"
+    implementation "io.noties.markwon:ext-tables:$markwon_version"
+    implementation "io.noties.markwon:ext-tasklist:$markwon_version"
+    implementation "io.noties.markwon:html:$markwon_version"
+    implementation "io.noties.markwon:image:$markwon_version"
+    implementation "io.noties.markwon:syntax-highlight:$markwon_version"
+
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'io.noties:prism4j:2.0.0'
+    implementation 'io.noties:debug:5.0.0@jar'
+    implementation 'com.google.dagger:dagger:2.10'
+    implementation 'com.caverock:androidsvg:1.4'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.14'
+
+    annotationProcessor 'io.noties:prism4j-bundler:2.0.0'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
+}
